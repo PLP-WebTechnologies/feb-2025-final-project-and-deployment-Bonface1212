@@ -4,66 +4,93 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --nav-bg: #333333;
+    --nav-text: #ffffff;
+    --card-bg: #ffffff;
+    --card-border: #dddddd;
+    --accent-color: #2ecc71;
+    --accent-hover: #27ae60;
+    --hero-bg: #f4f4f4;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --nav-bg: #2d2d2d;
+    --nav-text: #ffffff;
+    --card-bg: #2d2d2d;
+    --card-border: #404040;
+    --accent-color: #2ecc71;
+    --accent-hover: #27ae60;
+    --hero-bg: #2d2d2d;
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 nav {
-    background-color: #333;
-    color: white;
+    background-color: var(--nav-bg);
+    color: var(--nav-text);
     padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
+
 .theme-switch {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-left: auto;
-    margin-right: 2rem;
+    margin: 0.5rem;
 }
 
 .theme-switch button {
     background: none;
-    border: none;
+    border: 1px solid var(--nav-text);
     color: var(--nav-text);
     cursor: pointer;
     padding: 0.5rem;
+    border-radius: 4px;
 }
 
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-}
-.logo :hover {
-    color: #2ecc71;
-    transition: color 0.3s;
+    color: var(--nav-text);
 }
 
 .nav-links {
     display: flex;
     list-style: none;
     gap: 2rem;
-
+    flex-wrap: wrap;
 }
 
 .nav-links a {
-    color: white;
+    color: var(--nav-text);
     text-decoration: none;
-    
+    padding: 0.5rem;
 }
+
 .nav-links a:hover {
-    color: #2ecc71
+    color: var(--accent-color);
 }
 
 .nav-links a.active {
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid var(--nav-text);
 }
 
 .hero {
-    background-color: #f4f4f4;
+    background-color: var(--hero-bg);
     text-align: center;
     padding: 4rem 2rem;
 }
@@ -71,11 +98,12 @@ nav {
 .hero h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    color: var(--text-color);
 }
 
 .cta-button {
     display: inline-block;
-    background-color: #2ecc71;
+    background-color: var(--accent-color);
     color: white;
     padding: 1rem 2rem;
     text-decoration: none;
@@ -85,7 +113,7 @@ nav {
 }
 
 .cta-button:hover {
-    background-color: #27ae60;
+    background-color: var(--accent-hover);
 }
 
 main {
@@ -103,10 +131,16 @@ main {
 }
 
 .product-card {
-    border: 1px solid #ddd;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
     padding: 1rem;
     border-radius: 8px;
     text-align: center;
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
 }
 
 .product-card img {
@@ -114,29 +148,32 @@ main {
     max-width: 200px;
     height: auto;
     margin-bottom: 1rem;
+    border-radius: 4px;
 }
 
 .product-card h3 {
     margin-bottom: 0.5rem;
+    color: var(--text-color);
 }
 
 .product-card .price {
-    color: #2ecc71;
+    color: var(--accent-color);
     font-weight: bold;
     margin-bottom: 1rem;
 }
 
 button {
-    background-color: #2ecc71;
+    background-color: var(--accent-color);
     color: white;
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #27ae60;
+    background-color: var(--accent-hover);
 }
 
 .cart-item {
@@ -144,7 +181,8 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--card-border);
+    background-color: var(--card-bg);
 }
 
 .cart-total {
@@ -152,7 +190,6 @@ button:hover {
     text-align: right;
 }
 
-/* About Page Styles */
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -168,6 +205,7 @@ button:hover {
 
 .about-text h3 {
     margin: 1rem 0;
+    color: var(--text-color);
 }
 
 .about-text ul {
@@ -175,7 +213,6 @@ button:hover {
     margin: 1rem 0;
 }
 
-/* Contact Page Styles */
 .contact-container {
     max-width: 1200px;
     margin: 50px auto;
@@ -185,13 +222,13 @@ button:hover {
 
 .contact-container h1 {
     font-size: 2.5em;
-    color: #2ecc71;
+    color: var(--accent-color);
     margin-bottom: 20px;
 }
 
 .contact-container p {
     font-size: 1.2em;
-    color: #555;
+    color: var(--text-color);
     margin-bottom: 30px;
 }
 
@@ -203,7 +240,7 @@ button:hover {
 
 .contact-info {
     text-align: left;
-    background: #ffffff;
+    background: var(--card-bg);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -211,18 +248,18 @@ button:hover {
 
 .contact-info h2 {
     font-size: 1.8em;
-    color: #2ecc71;
+    color: var(--accent-color);
     margin-bottom: 15px;
 }
 
 .contact-info p {
     font-size: 1.1em;
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 10px;
 }
 
 .contact-info a {
-    color: #2ecc71;
+    color: var(--accent-color);
     text-decoration: none;
 }
 
@@ -231,7 +268,7 @@ button:hover {
 }
 
 .contact-form {
-    background: #ffffff;
+    background: var(--card-bg);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -239,7 +276,7 @@ button:hover {
 
 .contact-form h2 {
     font-size: 1.8em;
-    color: #2ecc71;
+    color: var(--accent-color);
     margin-bottom: 15px;
 }
 
@@ -248,15 +285,17 @@ button:hover {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--card-border);
     border-radius: 5px;
     font-size: 1em;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
 .contact-form button {
     padding: 10px 20px;
-    background-color: #2ecc71;
-    color: #ffffff;
+    background-color: var(--accent-color);
+    color: white;
     border: none;
     border-radius: 5px;
     font-size: 1em;
@@ -265,12 +304,12 @@ button:hover {
 }
 
 .contact-form button:hover {
-    background-color: #076c31;
+    background-color: var(--accent-hover);
 }
 
 footer {
-    background-color: #333;
-    color: white;
+    background-color: var(--nav-bg);
+    color: var(--nav-text);
     text-align: center;
     padding: 1rem;
     position: fixed;
@@ -278,11 +317,26 @@ footer {
     width: 100%;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
-    .nav-links {
+    nav {
+        flex-direction: column;
+        text-align: center;
         gap: 1rem;
-        font-size: 0.9rem;
+    }
+
+    .theme-switch {
+        margin: 0.5rem auto;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 0.5rem;
     }
 
     .hero h1 {
@@ -293,8 +347,7 @@ footer {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 
-    .about-content,
-    .contact-container {
+    .about-content {
         grid-template-columns: 1fr;
     }
 
@@ -302,25 +355,28 @@ footer {
         max-height: 300px;
         object-fit: cover;
     }
+
+    .cart-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .cart-item img {
+        margin: 0 auto;
+    }
 }
 
 @media (max-width: 480px) {
-    nav {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .nav-links {
-        margin-top: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
     .hero {
         padding: 2rem 1rem;
     }
 
     .hero h1 {
         font-size: 1.5rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
     }
 }

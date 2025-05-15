@@ -62,6 +62,10 @@ function toggleTheme() {
     setTheme(newTheme);
 }
 
+// Initialize theme
+const savedTheme = localStorage.getItem('theme') || 'light';
+setTheme(savedTheme);
+
 // Cart functionality
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
